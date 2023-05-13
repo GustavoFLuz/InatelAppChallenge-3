@@ -1,47 +1,37 @@
-import { useState, useEffect } from 'react';
-const { ipcRenderer } = window.require('electron');
-
-function App() {
-  const [process, setProcess] = useState<string>('');
-  const [protocols, setProtocols] = useState<string[]>([]);
-  const [hosts, setHosts] = useState<string[]>([]);
-
-  useEffect(() => {
+import { ThemeProvider } from '@emotion/react';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './router';
+import { LightTheme as theme } from "./shared/themes"
+const App = ()=>{
+  
+  return (
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router}/>
+    </ThemeProvider>
+  )
+}
+export default App;
+  /* useEffect(() => {
     ipcRenderer.on('process', (_event: any, data: any) => {
-      setProcess(data);
+      const parsedData = ConvertResponseToJSON(data);
+      if (!parsedData) return; 
+      setProcess(parsedData);
     });
 
+    ipcRenderer.on('protocols', (_event: any, data: any) => {
+      const parsedData = ConvertResponseToJSON(data);
+      if (!parsedData) return; 
+      setProtocols(parsedData);
+    });
+
+    ipcRenderer.on('hosts', (_event: any, data: any) => {
+      const parsedData = ConvertResponseToJSON(data);
+      if (!parsedData) return; 
+      setHosts(parsedData);
+    });
     return () => {
       ipcRenderer.removeAllListeners('process');
-    };
-  }, []);
-  useEffect(() => {
-    ipcRenderer.on('protocols', (_event: any, data: any) => {
-      setProtocols(data);
-    });
-
-    return () => {
       ipcRenderer.removeAllListeners('protocols');
-    };
-  }, []);
-  useEffect(() => {
-    ipcRenderer.on('hosts', (_event: any, data: any) => {
-      setHosts(data);
-    });
-
-    return () => {
       ipcRenderer.removeAllListeners('hosts');
     };
-  }, []);
-
-  return (
-    <div>
-      <h1>Electron + React + Typescript</h1>
-      <p style={{color:"blue"}}>Last process received: {process}</p>
-      <p style={{color:"red"}}>Last protocol received: {protocols}</p>
-      <p style={{color:"green"}}>Last host received: {hosts}</p>
-    </div>
-  );
-}
-
-export default App
+  }, []); */
