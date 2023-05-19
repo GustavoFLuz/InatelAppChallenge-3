@@ -53,7 +53,7 @@ export const ProcessProvider: React.FC<ProcessProviderProps> = ({ children }) =>
   }
 
   useEffect(() => {
-    if (totalConsumption < totalConsumptionThreshhold && totalConsumption!=0) return;
+    if (totalConsumption < totalConsumptionThreshhold || totalConsumption==0) return;
     pushAlerts(-1, "Consumo total passou de:" + ConvertFromNumberToBytes(totalConsumptionThreshhold))
     setTotalConsumptionThreshhold(prev => prev + settings.notifyTotalAmount)
   }, [totalConsumption])
