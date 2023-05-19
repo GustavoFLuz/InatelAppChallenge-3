@@ -1,1 +1,5 @@
 export * from "./ConvertResponseToJSON"
+export * from "./ByteConvertion"
+export * from "./TimeConvertion"
+export * from "./ListOfColors"
+export * from "./DownloadCSV"

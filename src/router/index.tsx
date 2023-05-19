@@ -1,5 +1,5 @@
 import { Container } from "../shared/components";
-import { Home } from "../pages";
+import * as pages from "../pages";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
@@ -8,8 +8,23 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Home />,
+                element: <pages.Home />,
             },
+            {
+                path: "/processes",
+                element: <pages.Processes />,
+            },
+
+            {
+                path: "/protocols",
+                element: <pages.Protocols />,
+            },
+
+            {
+                path: "/hosts",
+                element: <pages.Hosts />,
+            },
+
         ],
     },
 ]);
