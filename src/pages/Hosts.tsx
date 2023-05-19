@@ -87,9 +87,10 @@ export const Hosts = () => {
                             </Select>
                         </FormControl>
                     </Box>
-                    <IconButton aria-label="decreasing" onClick={() => setDecreasing(!decreasing)}>
+                    {currentScreen === 0 &&
+                        <IconButton aria-label="decreasing" onClick={() => setDecreasing(!decreasing)}>
                         {!decreasing ? <ExpandMoreIcon /> : <ExpandLessIcon />}
-                    </IconButton>
+                    </IconButton>}
                 </Box>
                 <Box sx={{display:"flex", gap:3}}>
                     <Button variant="outlined" color="secondary" sx={buttonHover} onClick={() => setCurrentScreen(0)}><FormatListBulletedIcon /></Button>

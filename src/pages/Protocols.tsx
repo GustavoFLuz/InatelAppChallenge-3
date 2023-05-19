@@ -62,9 +62,9 @@ export const Protocols = () => {
 
     const getCurrentScreen = () => {
         return [
-            <ProtocolsList data={sortedData} history={total}/>,
+            <ProtocolsList data={sortedData} history={total} />,
             <PieChart data={sortedData} sorting={sorting} />,
-            <LineChart data={totalToArray(total)} sorting={sorting} length={100} msInterval={3000} skip={3}/>
+            <LineChart data={totalToArray(total)} sorting={sorting} length={100} msInterval={3000} skip={3} />
         ][currentScreen]
     }
     return (
@@ -87,16 +87,17 @@ export const Protocols = () => {
                             </Select>
                         </FormControl>
                     </Box>
-                    <IconButton aria-label="decreasing" onClick={() => setDecreasing(!decreasing)}>
-                        {!decreasing ? <ExpandMoreIcon /> : <ExpandLessIcon />}
-                    </IconButton>
+                    {currentScreen === 0 &&
+                        <IconButton aria-label="decreasing" onClick={() => setDecreasing(!decreasing)}>
+                            {!decreasing ? <ExpandMoreIcon /> : <ExpandLessIcon />}
+                        </IconButton>}
                 </Box>
                 <Box sx={{ display: "flex", gap: 3 }}>
                     <Button variant="outlined" color="secondary" sx={buttonHover} onClick={() => setCurrentScreen(0)}><FormatListBulletedIcon /></Button>
                     <Button variant="outlined" color="secondary" sx={buttonHover} onClick={() => setCurrentScreen(1)}><PieChartIcon /></Button>
                     <Button variant="outlined" color="secondary" sx={buttonHover} onClick={() => setCurrentScreen(2)}><ShowChartIcon /></Button>
                 </Box>
-                <ExportAsCSV data={totalToArray(total)} title={'protocols'}/>
+                <ExportAsCSV data={totalToArray(total)} title={'protocols'} />
             </Menu>
             <List sx={{ flexGrow: 1, overflowY: "auto", mb: 10 }}>
                 {getCurrentScreen()}
